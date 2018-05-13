@@ -62,7 +62,14 @@ class Picture(object):
 def use_picture(pic):
   if download(pic.url) is True:
       set_background(comun.POTD)
+      print('Title: {}'.format(pic.name))
+      print('Caption: {}'.format(pic.description))
 
+
+def keyword_list(pic_list, word):
+  result = list(x for x in pic_list if word in (x.name + x.description).lower())
+  print('number of results: {}'.format(len(result)))
+  return result
 
 
 if __name__ == '__main__':
